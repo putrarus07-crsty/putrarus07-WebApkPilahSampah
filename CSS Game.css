@@ -1,0 +1,79 @@
+body {
+  background-color: #fbfaf5;
+  color: #1e293b;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-image:
+    radial-gradient(circle at 8% 8%, rgba(16, 185, 129, 0.10), transparent 36%),
+    radial-gradient(circle at 92% 14%, rgba(14, 165, 233, 0.10), transparent 38%);
+  overflow-x: hidden;
+}
+
+.font-eco {
+  font-family: 'Fredoka', sans-serif;
+}
+
+/* Animasi Ban Berjalan */
+@keyframes conveyorStripe {
+  0% { background-position: 0 0; }
+  100% { background-position: 48px 0; }
+}
+
+.conveyor-belt {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #334155,
+    #334155 12px,
+    #475569 12px,
+    #475569 24px
+  );
+  background-size: 48px 48px;
+  animation: conveyorStripe 1.2s linear infinite;
+}
+
+.conveyor-paused {
+  animation-play-state: paused;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.88); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shakeSoft {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+}
+
+@keyframes floatItem {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+.animate-pop {
+  animation: popIn 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-shake {
+  animation: shakeSoft 0.36s ease-in-out;
+}
+
+.animate-float {
+  animation: floatItem 2.2s ease-in-out infinite;
+}
+
+.bin-drop-active {
+  transform: scale(1.04);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.45);
+}
+
+/* Sembunyikan scrollbar horizontal pada tab */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
