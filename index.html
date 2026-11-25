@@ -90,6 +90,9 @@
         <button onclick="switchTab('kamus')" id="nav-top-kamus" class="nav-tab-btn px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 transition">
           <span>📚</span> Kamus & Panduan Sampah
         </button>
+        <button onclick="switchTab('video')" id="nav-top-video" class="nav-tab-btn px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 transition">
+          <span>📺</span> Video Berita
+        </button>
         <button onclick="switchTab('dashboard')" id="nav-top-dashboard" class="nav-tab-btn px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 transition">
           <span>🌍</span> Dashboard Eco-Hero
         </button>
@@ -481,6 +484,45 @@
     </section>
 
     <!-- ============================================================
+        TAB VIDEO: VIDEO BERITA LINGKUNGAN (YOUTUBE)
+        ============================================================ -->
+    <section id="view-video" class="hidden space-y-5">
+      <div class="bg-white rounded-3xl border border-rose-200 p-5 sm:p-6 shadow-sm space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <span class="text-xs font-extrabold uppercase tracking-wider text-rose-600">
+              BERITA & EDUKASI LINGKUNGAN
+            </span>
+            <h2 class="font-eco text-xl sm:text-2xl font-bold text-slate-900 mt-0.5">
+              Video Berita
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1">
+              Tonton video berita berikut untuk menambah wawasan tentang pengelolaan sampah dan lingkungan.
+            </p>
+          </div>
+          <a href="https://youtu.be/Mavv5aSYIH4" target="_blank" rel="noopener noreferrer"
+             class="self-start sm:self-center px-4 py-2.5 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-extrabold shadow-md transition shrink-0">
+            ▶️ Buka di YouTube
+          </a>
+        </div>
+
+        <!-- Pemutar 16:9, dimuat saat tab dibuka & dihentikan saat tab ditinggalkan -->
+        <div class="relative w-full overflow-hidden rounded-2xl bg-slate-900 shadow-md" style="aspect-ratio: 16 / 9;">
+          <iframe
+            id="news-video-frame"
+            data-src="https://www.youtube.com/embed/Mavv5aSYIH4?si=o9mi0jX2G9-tBRX-"
+            title="Video Berita"
+            class="absolute inset-0 w-full h-full"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
         TAB 4: SIMULATOR DAMPAK & PROGRES ("DASHBOARD ECO-HERO")
         ============================================================ -->
     <section id="view-dashboard" class="hidden space-y-5">
@@ -589,7 +631,7 @@
 
   <!-- ==================== NAVIGASI BAWAH MOBILE (BOTTOM NAV) ==================== -->
   <nav class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-2 py-1.5 shadow-lg">
-    <div class="grid grid-cols-4 gap-1">
+    <div class="grid grid-cols-5 gap-1">
       <button onclick="switchTab('conveyor')" id="nav-bot-conveyor" class="nav-bot-btn flex flex-col items-center justify-center py-1.5 rounded-2xl text-[11px] font-extrabold transition">
         <span class="text-lg leading-none mb-0.5">🏭</span>
         <span>Pilah Game</span>
@@ -601,6 +643,10 @@
       <button onclick="switchTab('kamus')" id="nav-bot-kamus" class="nav-bot-btn flex flex-col items-center justify-center py-1.5 rounded-2xl text-[11px] font-extrabold transition">
         <span class="text-lg leading-none mb-0.5">📚</span>
         <span>Kamus</span>
+      </button>
+      <button onclick="switchTab('video')" id="nav-bot-video" class="nav-bot-btn flex flex-col items-center justify-center py-1.5 rounded-2xl text-[11px] font-extrabold transition">
+        <span class="text-lg leading-none mb-0.5">📺</span>
+        <span>Video</span>
       </button>
       <button onclick="switchTab('dashboard')" id="nav-bot-dashboard" class="nav-bot-btn flex flex-col items-center justify-center py-1.5 rounded-2xl text-[11px] font-extrabold transition">
         <span class="text-lg leading-none mb-0.5">🌍</span>
