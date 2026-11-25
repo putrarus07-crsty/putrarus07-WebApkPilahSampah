@@ -672,7 +672,7 @@ function switchTab(tabName) {
   SoundFX.tap();
   activeTab = tabName;
 
-  ['conveyor', 'quiz', 'kamus', 'dashboard'].forEach(t => {
+  ['conveyor', 'quiz', 'kamus', 'video', 'dashboard'].forEach(t => {
     const section = document.getElementById(`view-${t}`);
     const topBtn = document.getElementById(`nav-top-${t}`);
     const botBtn = document.getElementById(`nav-bot-${t}`);
@@ -691,6 +691,16 @@ function switchTab(tabName) {
         : 'nav-bot-btn flex flex-col items-center justify-center py-1.5 rounded-2xl text-[11px] font-bold text-slate-500 hover:bg-slate-100 transition';
     }
   });
+
+  // Video: muat saat tab dibuka, kosongkan saat ditinggalkan (agar video berhenti)
+  const videoFrame = document.getElementById('news-video-frame');
+  if (videoFrame) {
+    if (tabName === 'video') {
+      if (!videoFrame.getAttribute('src')) videoFrame.setAttribute('src', videoFrame.dataset.src);
+    } else if (videoFrame.getAttribute('src')) {
+      videoFrame.removeAttribute('src');
+    }
+  }
 
   if (tabName === 'kamus') renderKamusList();
   if (tabName === 'dashboard') updateGlobalStatsUI();
