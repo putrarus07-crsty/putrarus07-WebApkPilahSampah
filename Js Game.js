@@ -668,6 +668,32 @@ function showToast(msg, type = 'info') {
   }, 2400);
 }
 
+const NEWS_VIDEO_ID = 'Mavv5aSYIH4';
+const NEWS_VIDEO_URL = 'https://youtu.be/Mavv5aSYIH4';
+let newsVideoInitialHtml = null;
+
+function playNewsVideo() {
+  SoundFX.tap();
+  const box = document.getElementById('news-video-player');
+  if (!box) return;
+  // YouTube menolak pemutar sematan jika halaman dibuka dari file lokal (Error 153)
+  if (!/^https?:$/.test(location.protocol)) {
+    window.open(NEWS_VIDEO_URL, '_blank', 'noopener');
+    showToast('Dibuka di YouTube (pemutar langsung butuh alamat http/https)', 'info');
+    return;
+  }
+  if (newsVideoInitialHtml === null) newsVideoInitialHtml = box.innerHTML;
+  box.innerHTML = `<iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/${NEWS_VIDEO_ID}?autoplay=1&rel=0" title="Video Berita" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+}
+
+function resetNewsVideo() {
+  const box = document.getElementById('news-video-player');
+  if (box && newsVideoInitialHtml !== null) {
+    box.innerHTML = newsVideoInitialHtml;
+    newsVideoInitialHtml = null;
+  }
+}
+
 function switchTab(tabName) {
   SoundFX.tap();
   activeTab = tabName;
@@ -692,15 +718,8 @@ function switchTab(tabName) {
     }
   });
 
-  // Video: muat saat tab dibuka, kosongkan saat ditinggalkan (agar video berhenti)
-  const videoFrame = document.getElementById('news-video-frame');
-  if (videoFrame) {
-    if (tabName === 'video') {
-      if (!videoFrame.getAttribute('src')) videoFrame.setAttribute('src', videoFrame.dataset.src);
-    } else if (videoFrame.getAttribute('src')) {
-      videoFrame.removeAttribute('src');
-    }
-  }
+  // Video: kembalikan ke thumbnail saat tab ditinggalkan (menghentikan video)
+  if (tabName !== 'video') resetNewsVideo();
 
   if (tabName === 'kamus') renderKamusList();
   if (tabName === 'dashboard') updateGlobalStatsUI();
