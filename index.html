@@ -506,18 +506,18 @@
           </a>
         </div>
 
-        <!-- Pemutar 16:9, dimuat saat tab dibuka & dihentikan saat tab ditinggalkan -->
-        <div class="relative w-full overflow-hidden rounded-2xl bg-slate-900 shadow-md" style="aspect-ratio: 16 / 9;">
-          <iframe
-            id="news-video-frame"
-            data-src="https://www.youtube.com/embed/Mavv5aSYIH4?si=o9mi0jX2G9-tBRX-"
-            title="Video Berita"
-            class="absolute inset-0 w-full h-full"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
+        <!-- Pemutar 16:9: thumbnail yang bisa diklik -->
+        <div id="news-video-player" class="relative w-full overflow-hidden rounded-2xl bg-slate-900 shadow-md" style="aspect-ratio: 16 / 9;">
+          <button type="button" onclick="playNewsVideo()" aria-label="Putar video berita"
+                  class="group absolute inset-0 w-full h-full cursor-pointer">
+            <img src="https://img.youtube.com/vi/Mavv5aSYIH4/hqdefault.jpg" alt="Thumbnail video berita"
+                 class="absolute inset-0 w-full h-full object-cover" />
+            <span class="absolute inset-0 bg-black/25 group-hover:bg-black/10 transition"></span>
+            <span class="absolute inset-0 flex items-center justify-center">
+              <span class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-red-600 group-hover:bg-red-500 group-hover:scale-110 transition flex items-center justify-center text-white text-3xl sm:text-4xl shadow-xl pl-1">▶</span>
+            </span>
+            <span class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-black/60 text-white text-xs font-extrabold">Klik untuk memutar video</span>
+          </button>
         </div>
       </div>
     </section>
